@@ -2,7 +2,13 @@
 wraptools
 =========
 
-Utilities for wrapping and dispatching functions
+Utilities for wrapping and dispatching functions.
+
+Supported Python versions:
+
+* 2.7
+* 3.4
+* 3.5
 
 pluggable
 =========

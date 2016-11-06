@@ -1,4 +1,4 @@
-def dispatch(*dispatchers, default=None):
+def dispatch(*dispatchers, **kwargs):
     """ Dispatch
 
     :arg dispatchers: will be a iterable of pair tuple
@@ -19,6 +19,9 @@ def dispatch(*dispatchers, default=None):
     :arg default: function will be called if all of dispatchers will return False.
     default function is optional so when default is not specified, it will return None.
     """
+    # JUST FOR SUPPORTING PYTHON 2 SYNTAX
+    default = kwargs.get('default')
+
     def wrapped(*args, **kwargs):
         for dispatcher, func in dispatchers:
             if dispatcher(*args, **kwargs):
