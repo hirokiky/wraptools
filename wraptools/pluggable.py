@@ -75,13 +75,15 @@ class purge_pluggable_decorators:
     ...
     >>> test()  # Just say "goodbye"
     """
-    def purge(self):
-        global _enable_pluggable_decorators
-        _enable_pluggable_decorators = True
-
-    def wrap(self):
+    @classmethod
+    def purge(cls):
         global _enable_pluggable_decorators
         _enable_pluggable_decorators = False
+
+    @classmethod
+    def wrap(cls):
+        global _enable_pluggable_decorators
+        _enable_pluggable_decorators = True
 
     def __enter__(self):
         self.purge()
@@ -89,11 +91,11 @@ class purge_pluggable_decorators:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.wrap()
 
-    def __call__(self, func):
+    def __init__(self, func=None):
+        self.func = func
+
+    def __call__(self, *args, **kwargs):
         """ As decorator
         """
-        @wraps(func)
-        def wrapped(*args, **kwargs):
-            with self:
-                return func(*args, **kwargs)
-        return wrapped
+        with self:
+            return self.func(*args, **kwargs)
