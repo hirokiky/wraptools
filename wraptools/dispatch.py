@@ -83,5 +83,5 @@ class dispatcher:
     def __or__(self, other):
         return self.__class__(any_(self.func, other.func))
 
-    def __invert__(self, other):
+    def __invert__(self):
         return self.__class__(not_(self.func))
