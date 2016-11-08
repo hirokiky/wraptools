@@ -14,5 +14,6 @@ setup(
     author_email="hirokiky@gmail.com",
     description="Utilities for wrapping and dispatching functions",
     long_description=README,
+    license='MIT',
     url="https://github.com/hirokiky/wraptools/",
 )
