@@ -21,3 +21,12 @@ method_get = method("GET")
 method_post = method("POST")
 method_put = method("PUT")
 method_delete = method("DELETE")
+
+
+def has_param(param_name):
+    """ Dispatcher to route when request.GET or request.POST has :param param_name: value.
+    """
+    @dispatcher
+    def _dispatcher(request, *args, **kwargs):
+        return param_name in request.GET or param_name in request.POST
+    return _dispatcher
