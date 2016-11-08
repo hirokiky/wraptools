@@ -99,7 +99,7 @@ generic Python functions.
 
     from wraptools.contrib.django.dispatchers import is_authenticated, method_get
 
-    @dispatch(
+    top = dispatch(
         (is_authenticated & method_get, dashboard_get),
         (is_authenticated & (method_post | method_put), dashboard_post),
         (~is_authenticated, landing),
@@ -131,7 +131,7 @@ will be able to be combined and inverted by ``&``, ``|``, or ``~``
 
     from wraptools.dispatch import dispatcher
 
-    @dispatcher
+    dispatcher
     def is_even(num):
         return num % 2 == 0
 
