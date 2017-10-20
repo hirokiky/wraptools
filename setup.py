@@ -9,7 +9,7 @@ README = open(os.path.join(here, 'README.rst')).read()
 setup(
     name="wraptools",
     version="1.1",
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     author="Hiroki Kiyohara",
     author_email="hirokiky@gmail.com",
     description="Utilities for wrapping and dispatching functions",
